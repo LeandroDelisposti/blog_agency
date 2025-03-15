@@ -1,17 +1,50 @@
-research_task:
+writing_task:
   description: >
-    Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
-    the current year is {current_year}.
-  expected_output: >
-    A list with 10 bullet points of the most relevant information about {topic}
-  agent: researcher
+    Crie conteúdo educacional detalhado e abrangente para {topic} com base na pesquisa fornecida, seu conhecimento existente e plano de conteúdo.
+    O conteúdo deve ser adaptado para um público {audience_level}, explicando conceitos completamente e em um nível apropriado de complexidade.
+    Siga a estrutura do plano de conteúdo, garantindo que a escrita seja envolvente, tecnicamente precisa e aprofundada.
+    Rigor, completude e profundidade são essenciais.
 
-reporting_task:
-  description: >
-    Review the context you got and expand each topic into a full section for a report.
-    Make sure the report is detailed and contains any and all relevant information.
+    Section: {section}
   expected_output: >
-    A fully fledged report with the main topics, each with a full section of information.
-    Formatted as markdown without '```'
-  agent: reporting_analyst
+    Uma seção bem estruturada e abrangente que fará parte de uma peça de conteúdo de formato mais longo que segue o
+    plano de conteúdo e ensina efetivamente {topic} para audiência de nível {audience_level}. Completude, meticulosidade e profundidade são essenciais. 
+    Use analogias, exemplos e explicações detalhadas para ajudar a explicar o conteúdo quando apropriado.
+
+    Garanta que o conteúdo esteja formatado com títulos e subtítulos claros e use marcadores quando apropriado para melhorar a legibilidade em um blog.
+
+    Não há necessidade de incluir resumos ou conclusões de cada seção, apenas o conteúdo.
+  agent: content_writer
+
+editing_task:
+  description: >
+    Revise e refine o conteúdo educacional escrito para {topic}. Garanta que ele mantenha altos padrões de qualidade, siga o
+    plano de conteúdo precisamente e comunique efetivamente todos os objetivos de aprendizagem. Preste atenção especial ao nível da linguagem,
+    exemplos e explicações para verificar se são apropriados para audiencia de nível {audience_level}, preservando a precisão técnica.
+    Rigor, completude e profundidade são essenciais.
+
+    Section: {section}
+  expected_output: >
+    Uma versão polida e abrangente do conteúdo educacional com clareza aprimorada, nível de complexidade apropriado e legibilidade aprimorada
+    para audiencia do nível {audience_level}. Garanta que o conteúdo esteja formatado com títulos e subtítulos claros e use marcadores quando 
+    apropriado para melhorar a legibilidade.
+
+    Queremos apenas o conteúdo da seção de volta, nada mais. Não inclua o feedback.
+  agent: editor
+
+quality_review_task:
+  description: >
+    Realize uma avaliação abrangente da qualidade do conteúdo educacional final para {topic}. Avalie em relação às melhores práticas educacionais
+    e verifique o alinhamento com as expectativas de nível {audience_level}. Verifique se todas as seções do plano de conteúdo são
+    cobertas adequadamente, os conceitos são construídos logicamente e os objetivos de aprendizagem são atingidos de forma eficaz. 
+    Rigor, completude e profundidade são essenciais.
+
+    Section: {section}
+  expected_output: >
+    Quero uma versão melhorada e abrangente do conteúdo da seção que incorpore o feedback. 
+    Garanta que o conteúdo esteja formatado com títulos e subtítulos claros e use marcadores quando apropriado para melhorar a legibilidade.
+
+    Inclua referências às fontes usadas no resumo criado em @tasks.yaml. 
+    Além disso, garanta que as referências sejam incluídas como citações em linha ou hiperlinks dentro do conteúdo quando apropriado. 
+    Não inclua o feedback em si, apenas o conteúdo melhorado.
+  agent: quality_reviewer

@@ -1,13 +1,27 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
+from crewai_tools import SerperDevTool
+
+from pydantic import BaseModel
+from typing import List
 
 # If you want to run a snippet of code before or after the crew starts, 
 # you can use the @before_kickoff and @after_kickoff decorators
 # https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
 
+class Section(BaseModel):
+    title: str
+    high_level_goal: str
+    why_important: str
+    sources: List[str]
+    content_outline: List[str]
+
+class EducationalPlan(BaseModel):
+    sections: List[Section]
+
 @CrewBase
 class ResearchCrew():
-	"""ResearchCrew crew"""
+	"""Research crew"""
 
 	# Learn more about YAML configuration files here:
 	# Agents: https://docs.crewai.com/concepts/agents#yaml-configuration-recommended
@@ -21,13 +35,22 @@ class ResearchCrew():
 	def researcher(self) -> Agent:
 		return Agent(
 			config=self.agents_config['researcher'],
-			verbose=True
+			verbose=True,
+			tools=[SerperDevTool()]
 		)
 
 	@agent
-	def reporting_analyst(self) -> Agent:
+	def marketer(self) -> Agent:
 		return Agent(
-			config=self.agents_config['reporting_analyst'],
+			config=self.agents_config['marketer'],
+			verbose=True,
+			tools=[SerperDevTool()]
+		)
+
+	@agent
+	def planner(self) -> Agent:
+		return Agent(
+			config=self.agents_config['planner'],
 			verbose=True
 		)
 
@@ -41,10 +64,16 @@ class ResearchCrew():
 		)
 
 	@task
-	def reporting_task(self) -> Task:
+	def seo_task(self) -> Task:
 		return Task(
-			config=self.tasks_config['reporting_task'],
-			output_file='report.md'
+			config=self.tasks_config['seo_task']
+		)
+
+	@task
+	def planning_task(self) -> Task:
+		return Task(
+			config=self.tasks_config['planning_task'],
+			output_pydantic=EducationalPlan
 		)
 
 	@crew

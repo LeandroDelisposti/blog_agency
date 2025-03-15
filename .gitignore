@@ -6,9 +6,20 @@ dist/
 wheels/
 *.egg-info
 
+.env
+__pycache__/
+lib/
+.DS_Store
+
+
 # Virtual environments
 .venv
 *.env
 
+# IDE Config
+.vscode
+
 # Results
 /*.txt
+research_flow/
+output/*

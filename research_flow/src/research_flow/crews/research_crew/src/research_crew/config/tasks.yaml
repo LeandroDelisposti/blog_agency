@@ -1,17 +1,26 @@
 research_task:
   description: >
-    Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
-    the current year is {current_year}.
+    Conduza uma pesquisa completa sobre {topic} com base no nível de público {audience_level}.
+    Certifique-se de encontrar qualquer informação interessante, relevante e atual (publicada no final de 2024 e início de 2025).
   expected_output: >
-    A list with 10 bullet points of the most relevant information about {topic}
+    Um relatório de pesquisa completo sobre {topic} com informações relevantes que podem inspirar conteúdo educacional posteriormente direcionado a {audience_level}. 
+    O relatório de pesquisa também deve incluir referências às fontes que você usou para criar o conteúdo.
   agent: researcher
 
-reporting_task:
+seo_task:
   description: >
-    Review the context you got and expand each topic into a full section for a report.
-    Make sure the report is detailed and contains any and all relevant information.
+    Conduza uma pesquisa completa sobre {topic} com afim de encontrar palavras-chave que mais performam em SEO.
+    Certifique-se de encontrar qualquer informação interessante, relevante e atual (publicada no final de 2024 e início de 2025).
   expected_output: >
-    A fully fledged report with the main topics, each with a full section of information.
-    Formatted as markdown without '```'
-  agent: reporting_analyst
+    Um relatório de palavras-chave relevantes sobre {topic} que podem engajar melhor os conteúdos criados no blog. 
+    O relatório de pesquisa também deve incluir referências às fontes que você usou.
+  agent: marketer
+
+planning_task:
+  description: >
+    Revise o conteúdo que você recebeu e crie um plano para uma peça de conteúdo educacional incrível e abrangente que seja direcionada a {audience_level}.
+    O plano deve ser altamente detalhado e abrangente.
+  expected_output: >
+    Um plano detalhado para uma peça de conteúdo educacional que é direcionada a {audience_level}.
+    O plano deve ser uma série de seções, cada seção com um subtítulo, objetivo de alto nível, por que é importante e fontes referenciadas.
+  agent: planner
