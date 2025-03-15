@@ -20,6 +20,5 @@ lib/
 .vscode
 
 # Results
-/*.txt
 research_flow/
 output/*
