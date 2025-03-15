@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import os
-from langchain_openai.chat_models import ChatOpenAI
 from research_flow.src.research_flow.main import ResearchFlow
 from typing import Dict
 
