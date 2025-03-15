@@ -49,4 +49,4 @@ The Research_flow Crew is composed of multiple AI agents, each with unique roles
 - Add daily limit quota to prevent unestimated cost
 - Adjust the split of topics by research topic for a better usage of OpenAi API
 - BUG | File is not streamed to file at the end
-- Integrate 'Additional Context' with agents flow
+- Integrate 'Additional Context' within agent flow
