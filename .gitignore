@@ -20,5 +20,4 @@ lib/
 .vscode
 
 # Results
-research_flow/
 output/*
